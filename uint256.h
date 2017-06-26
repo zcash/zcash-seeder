@@ -716,7 +716,10 @@ inline int Testuint256AdHoc(std::vector<std::string> vArg)
     d = a;
 
     printf("%s\n", d.ToString().c_str());
-    for (int i = uint256::WIDTH-1; i >= 0; i--) printf("%08x", d.pn[i]); printf("\n");
+    for (int i = uint256::WIDTH-1; i >= 0; i--) {
+        printf("%08x", d.pn[i]);
+        printf("\n");
+    }
 
     uint256 neg = d;
     neg = ~neg;
