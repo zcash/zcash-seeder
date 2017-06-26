@@ -35,7 +35,7 @@ protected:
 public:
     explicit CCriticalSection() { pthread_rwlock_init(&mutex, NULL); }
     ~CCriticalSection() { pthread_rwlock_destroy(&mutex); }
-    void Enter(bool fShared = false) { 
+    void Enter(bool fShared = false) {
       if (fShared) {
         pthread_rwlock_rdlock(&mutex);
       } else {
