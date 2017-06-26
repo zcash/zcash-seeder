@@ -22,24 +22,24 @@ class Log {
     private:
         bool is_open;
         std::ofstream fout;
-	      std::mutex trans_mutex;
-	      std::condition_variable run_cv;
-	      std::thread exec_thread;
+        std::mutex trans_mutex;
+        std::condition_variable run_cv;
+        std::thread exec_thread;
 
-	      class LogMsg {
-	          public:
-	              LogMsg(std::string&);
-		            friend std::ostream& operator<<(std::ostream&, const LogMsg&);
-	          private:
-	               std::string message;
-	      };
+        class LogMsg {
+            public:
+                LogMsg(std::string&);
+                friend std::ostream& operator<<(std::ostream&, const LogMsg&);
+	    private:
+                std::string message;
+        };
 
         std::queue<std::shared_ptr<LogMsg>> msg_queue;
-	      Log();
-	      Log(Log const&){};
-	      Log& operator=(Log const&);
-	      void thread_handle();
-	      friend std::ostream& operator<<(std::ostream&, const LogMsg&);
+        Log();
+        Log(Log const&){};
+        Log& operator=(Log const&);
+        void thread_handle();
+        friend std::ostream& operator<<(std::ostream&, const LogMsg&);
 };
 
 #endif
