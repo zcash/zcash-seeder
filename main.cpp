@@ -11,6 +11,7 @@
 
 #include "bitcoin.h"
 #include "db.h"
+#include "logging.h"
 
 using namespace std;
 
@@ -371,10 +372,6 @@ extern "C" void* ThreadDumper(void*) {
 extern "C" void* ThreadStats(void*) {
   bool first = true;
   do {
-    char c[256];
-    time_t tim = time(NULL);
-    struct tm *tmp = localtime(&tim);
-    strftime(c, 256, "[%m/%d/%y %H:%M:%S]", tmp);
     CAddrDbStats stats;
     db.GetStats(stats);
     if (first)
@@ -391,7 +388,7 @@ extern "C" void* ThreadStats(void*) {
       requests += dnsThread[i]->dns_opt.nRequests;
       queries += dnsThread[i]->dbQueries;
     }
-    printf("%s %i/%i available (%i tried in %is, %i new, %i active), %i banned; %llu DNS requests, %llu db queries", c, stats.nGood, stats.nAvail, stats.nTracked, stats.nAge, stats.nNew, stats.nAvail - stats.nTracked - stats.nNew, stats.nBanned, (unsigned long long)requests, (unsigned long long)queries);
+    printf("%s %i/%i available (%i tried in %is, %i new, %i active), %i banned; %llu DNS requests, %llu db queries", currentTimestamp().c_str(), stats.nGood, stats.nAvail, stats.nTracked, stats.nAge, stats.nNew, stats.nAvail - stats.nTracked - stats.nNew, stats.nBanned, (unsigned long long)requests, (unsigned long long)queries);
     Sleep(1000);
   } while(1);
   return nullptr;
@@ -423,6 +420,9 @@ int main(int argc, char **argv) {
   setbuf(stdout, NULL);
   CDnsSeedOpts opts;
   opts.ParseCommandLine(argc, argv);
+  static Log& logger = Log::init();
+  logger.open();
+
   printf("Supporting whitelisted filters: ");
   for (std::set<uint64_t>::const_iterator it = opts.filter_whitelist.begin(); it != opts.filter_whitelist.end(); it++) {
       if (it != opts.filter_whitelist.begin()) {
@@ -514,5 +514,6 @@ int main(int argc, char **argv) {
   pthread_create(&threadDump, NULL, ThreadDumper, NULL);
   void* res;
   pthread_join(threadDump, &res);
+  logger.close();
   return 0;
 }
