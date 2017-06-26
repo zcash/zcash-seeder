@@ -374,7 +374,7 @@ extern "C" void* ThreadStats(void*) {
     char c[256];
     time_t tim = time(NULL);
     struct tm *tmp = localtime(&tim);
-    strftime(c, 256, "[%y-%m-%d %H:%M:%S]", tmp);
+    strftime(c, 256, "[%m/%d/%y %H:%M:%S]", tmp);
     CAddrDbStats stats;
     db.GetStats(stats);
     if (first)
