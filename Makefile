@@ -11,3 +11,6 @@ dns.o: dns.c
 	gcc -pthread -std=c99 $(CXXFLAGS) dns.c -Wall -c -o dns.o
 
 %.o: %.cpp
+
+clean:
+	$(RM) dnsseed dns.o bitcoin.o netbase.o protocol.o db.o main.o util.o
