@@ -32,7 +32,7 @@ void Log::thread_handle(){
       this->run_cv.wait(flck);
     }
     shared_ptr<LogMsg> msg = msg_queue.front();
-    fout << *msg; // << std::endl;
+    fout << *msg;
     msg_queue.pop();
   }
 }
