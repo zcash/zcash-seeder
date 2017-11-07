@@ -84,6 +84,6 @@ extern std::string currentTimestamp() {
   char time_buffer[time_size];
   time_t now = time(NULL);
   struct tm *tmp = localtime(&now);
-  strftime(time_buffer, time_size, "[%m/%d/%y %H:%M:%S]", tmp);
+  strftime(time_buffer, time_size, "[%Y-%m-%d %H:%M:%S]", tmp);
   return std::string(time_buffer);
 }
