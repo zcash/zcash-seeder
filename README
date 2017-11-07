@@ -11,8 +11,9 @@ Features:
 * bans nodes after enough failures, or bad behaviour
 * keeps statistics over (exponential) windows of 2 hours, 8 hours,
   1 day and 1 week, to base decisions on.
-* very low memory (a few tens of megabytes) and cpu requirements.
+* very low memory (a few tens of megabytes) and CPU requirements.
 * crawlers run in parallel (by default 24 threads simultaneously).
+* writes a log of nodes discovered to dnsseed.log
 
 REQUIREMENTS
 ------------
@@ -22,7 +23,7 @@ $ sudo apt-get install build-essential libboost-all-dev libssl-dev
 USAGE
 -----
 
-Assuming you want to run a dns seed on dnsseed.example.com, you will
+Assuming you want to run a DNS seed on dnsseed.example.com, you will
 need an authorative NS record in example.com's domain record, pointing
 to for example vps.example.com:
 
@@ -40,7 +41,7 @@ e-mail address (with the @ part replaced by .) using -m.
 
 COMPILING
 ---------
-Compiling will require boost and ssl.  On debian systems, these are provided
+Compiling will require boost and ssl.  On Debian systems, these are provided
 by `libboost-dev` and `libssl-dev` respectively.
 
 $ make
