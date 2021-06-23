@@ -61,9 +61,9 @@ enum
 {
     NODE_NETWORK = (1 << 0),
     NODE_BLOOM = (1 << 2),
-    NODE_WITNESS = (1 << 3),
-    NODE_COMPACT_FILTERS = (1 << 6),
-    NODE_NETWORK_LIMITED = (1 << 10),
+    // NODE_WITNESS = (1 << 3),
+    // NODE_COMPACT_FILTERS = (1 << 6),
+    // NODE_NETWORK_LIMITED = (1 << 10),
 };
 
 class CAddress : public CService
