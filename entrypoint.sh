@@ -2,18 +2,18 @@
 set -ex
 
 # Default values for environment variables if not set
-SEED_HOSTNAME=${SEED_HOSTNAME}
-NODE_HOSTNAME=${NODE_HOSTNAME}
-EMAIL=${EMAIL}
-THREADS=${THREADS}
-ADDRESS=${ADDRESS:-"0.0.0.0"}
-PORT=${PORT:-"53"}
-NETWORK=${NETWORK:-"mainnet"}  # Default to "mainnet" unless otherwise set
+export SEED_HOSTNAME=${SEED_HOSTNAME}
+export NODE_HOSTNAME=${NODE_HOSTNAME}
+export EMAIL=${EMAIL}
+export THREADS=${THREADS}
+export ADDRESS=${ADDRESS:-"0.0.0.0"}
+export PORT=${PORT:-"53"}
+export NETWORK=${NETWORK:-"mainnet"}  # Default to "mainnet" unless otherwise set
 
 # Extra arguments for testnet
 extra_args=""
-if [ "$NETWORK" == "testnet" ]; then
-  extra_args="--testnet"
+if [[ "$NETWORK" == "testnet" ]]; then
+  export extra_args="--testnet"
 fi
 
 # If the first argument starts with a hyphen (-), consider it an argument for the dnsseed binary
@@ -28,7 +28,7 @@ if [ "$1" == "/home/dnsseed/dnsseed" ]; then
     -a "$ADDRESS" \
     -p "$PORT" \
     -m "$EMAIL" \
-    -t "$THREADS" $extra_args
+    -t "$THREADS" "$extra_args"
 else
   # If another command is passed, run that instead
   exec "$@"
