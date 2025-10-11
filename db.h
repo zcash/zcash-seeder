@@ -17,7 +17,7 @@
 extern int nMinimumHeight;
 static inline int GetRequireHeight(const bool testnet = fTestNet)
 {
-    return nMinimumHeight ? nMinimumHeight : (testnet ? 0 : 0);
+    return nMinimumHeight ? nMinimumHeight : (testnet ? 3600000 : 3000000);
 }
 
 std::string static inline ToString(const CService &ip) {
