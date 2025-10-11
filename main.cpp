@@ -465,8 +465,11 @@ extern "C" void* ThreadStats(void*) {
   return nullptr;
 }
 
-static const string mainnet_seeds[] = {"mainnet.z.cash", "dnsseed.str4d.xyz", ""};
-static const string testnet_seeds[] = {"testnet.z.cash", "explorer.testnet.z.cash", ""};
+static const string mainnet_seeds[] = {"dnsseed.z.cash", "dnsseed.str4d.xyz", "mainnet.seeder.zfnd.org", "mainnet.is.yolo.money", ""};
+static const string testnet_seeds[] = {"dnsseed.testnet.z.cash",
+                                       "testnet.seeder.zfnd.org",
+                                       "testnet.is.yolo.money",
+                                       ""};
 static const string *seeds = mainnet_seeds;
 static vector<string> vSeeds;
 
