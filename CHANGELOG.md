@@ -9,9 +9,15 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## Unreleased
 
 ### Changed
-- The P2P protocol version used by the seeder has been updated for the NU6.1 testnet.
+- The P2P protocol version used by the seeder has been updated for the NU6.1 mainnet.
 
-## [0.1.0] - 2024-08-27
+## [0.1.3] - 2024-11-23
+
+### Changed
+- The peer protocol version used by the seeder has been updated for the NU6 mainnet.
+- The required protocol version has been raised to NU6 mainnet.
+
+## [0.1.2] - 2024-10-02
 
 ### Changed
 - The peer protocol version used by the seeder has been updated for the NU6 testnet.
