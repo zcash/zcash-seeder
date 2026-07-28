@@ -10,6 +10,8 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ### Changed
 - The P2P protocol version used by the seeder has been updated for the NU6.1 mainnet.
+- The P2P protocol version used by the seeder has been updated for the NU6.3 (Ironwood) testnet
+  and mainnet.
 
 ## [0.1.3] - 2024-11-23
 
